@@ -1,0 +1,47 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+SudokuScreenManager:
+    transition: FadeTransition()
+    MenuScreen:
+    GameScreen:
+
+<MenuScreen>:
+    name: 'menu'
+    FloatLayout:
+        orientation: 'vertical'
+        FloatLayout:
+            Label:
+                text: 'Sudoku Game'
+                font_size: 100
+                font_name: 'DejaVuSans'
+                pos_hint: {'center_x': .5, 'center_y': .7}
+            Label:
+                text: 'Choose difficulty:'
+                font_name: 'DejaVuSans'
+                font_size: 50
+                pos_hint: {'center_x': .5, 'center_y': .55}
+            Button:
+                text: 'Easy'
+                font_name: 'DejaVuSans'
+                size_hint: (.15, .1)
+                pos_hint: {'center_x': .25, 'y': .3}
+                on_release: app.root.game_screen(1)
+            Button:
+                text: 'Medium'
+                font_name: 'DejaVuSans'
+                size_hint: (.15, .1)
+                pos_hint: {'center_x': .5, 'y': .3}
+                on_release: app.root.game_screen(2)
+            Button:
+                text: 'Hard'
+                font_name: 'DejaVuSans'
+                size_hint: (.15, .1)
+                pos_hint: {'center_x': .75, 'y': .3}
+                on_release: app.root.game_screen(3)
+
+<GameScreen>:
+    name: 'game'
+    BoxLayout:
+        orientation: 'vertical'
+        SudokuBoard:
+            difficulty: root.difficulty 
