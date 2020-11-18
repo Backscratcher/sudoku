@@ -93,7 +93,7 @@ class SudokuBoard(BoxLayout):
                 bottom = 0 if row in (3, 6) else 16
                 logical_row = row - 1
                 logical_column = column - 1
-                text = unicode(
+                text = str(
                     self.sudoku_engine.get(
                         column=logical_column, row=logical_row
                     ) or ''
